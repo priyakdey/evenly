@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# SPDX License headers
+JAVA_HEADER="/*\n * SPDX-License-Identifier: AGPL-3.0-or-later\n * Copyright (C) 2025 Priyak Dey\n */"
+JS_HEADER="// SPDX-License-Identifier: AGPL-3.0-or-later\n// Copyright (C) 2025 Priyak Dey"
+
+# Get staged files (not deleted) that are added or modified
+FILES=$(git diff --cached --name-only --diff-filter=AM | grep -E '\.(java|ts|tsx|js|jsx)$')
+
+for file in $FILES; do
+  # Skip if already contains SPDX
+  if grep -q "SPDX-License-Identifier: AGPL-3.0-or-later" "$file"; then
+    continue
+  fi
+
+  # Choose header based on extension
+  if [[ $file == *.java ]]; then
+    HEADER=$JAVA_HEADER
+  else
+    HEADER=$JS_HEADER
+  fi
+
+  # Prepend header
+  echo -e "$HEADER\n\n$(cat "$file")" > "$file"
+
+  # Re-add the modified file to staging
+  git add "$file"
+done
+
+exit 0
+

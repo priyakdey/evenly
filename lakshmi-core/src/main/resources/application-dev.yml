@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/evenly
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 5
+  liquibase:
+    enabled: true
