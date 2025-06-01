@@ -30,7 +30,6 @@ public class AuthTokenService implements TokenService<ProfileDto> {
         return algorithm.sign(payload, tokenMetadata);
     }
 
-
     @Override
     public ProfileDto decodeToken(String token) {
         return algorithm.verify(token, tokenMetadata);
