@@ -1,0 +1,13 @@
+.AppSidebarHeader {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppSidebarHeader-logo {
+  --logo-dimension: 150px;
+
+  height: var(--logo-dimension);
+  width: var(--logo-dimension);
+}

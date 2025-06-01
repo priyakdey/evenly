@@ -1,0 +1,90 @@
+.AppSidebarFooter {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.AppSidebarFooter-MenuButton {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.AppSidebarFooter-profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.AppSidebarFooter-profile-pic {
+  --profile-pic-dimension: 40px;
+
+  border-radius: 50%;
+  height: var(--profile-pic-dimension);
+  width: var(--profile-pic-dimension);
+}
+
+.AppSidebarFooter-profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.AppSidebarFooter-profile-name {
+  font-size: 14px;
+}
+
+.AppSidebarFooter-profile-email {
+  font-size: 11px;
+}
+
+.AppSidebarFooter-menu {
+  background-color: #1c1c1e;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+  z-index: 1000;
+  animation: fadeIn 150ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.AppSidebarFooter-menu [data-radix-dropdown-menu-item] {
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-radius: 4px;
+}
+
+.AppSidebarFooter-menu [data-radix-dropdown-menu-item]:hover,
+.AppSidebarFooter-menu [data-radix-dropdown-menu-item][data-highlighted] {
+  background-color: #2A2A2D;
+}
+
+.AppSidebarFooter-menu-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
