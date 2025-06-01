@@ -9,7 +9,7 @@ FILES=$(git diff --cached --name-only --diff-filter=AM | grep -E '\.(java|ts|tsx
 
 for file in $FILES; do
   # Skip if already contains SPDX
-  if grep -q "SPDX-License-Identifier: AGPL-3.0-or-later" "$file"; then
+  if grep -q "SPDX-License-Identifier:" "$file"; then
     continue
   fi
 
