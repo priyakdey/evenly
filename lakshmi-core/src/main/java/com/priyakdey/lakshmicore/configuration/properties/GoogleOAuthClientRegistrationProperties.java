@@ -5,13 +5,11 @@
 
 package com.priyakdey.lakshmicore.configuration.properties;
 
-import java.util.Set;
-
 /**
  * @author Priyak Dey
  */
 public record GoogleOAuthClientRegistrationProperties(String clientName, String clientId,
                                                       String clientSecret,
-                                                      Set<String> scopes,
+                                                      String scopes,
                                                       String redirectUri) {
 }

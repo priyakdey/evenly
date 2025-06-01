@@ -26,6 +26,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import static org.apache.tomcat.websocket.Constants.FOUND;
@@ -76,9 +77,9 @@ public class GoogleOAuthController {
                 "response_type", "code",
                 "scope", registrationProperties.scopes()
         );
-        URI redirectUri = buildUri(registrationProperties.redirectUri(), params);
+        URI googleLoginUrl = buildUri(providerProperties.authorizationUri(), params);
 
-        return ResponseEntity.status(HttpStatus.FOUND).location(redirectUri)
+        return ResponseEntity.status(HttpStatus.FOUND).location(googleLoginUrl)
                 .build();
     }
 
@@ -127,7 +128,7 @@ public class GoogleOAuthController {
             builder.queryParam(key, value);
         }
 
-        return builder.build(true).toUri();
+        return builder.build().toUri();
     }
 
 }

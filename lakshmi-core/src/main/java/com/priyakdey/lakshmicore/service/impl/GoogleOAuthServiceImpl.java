@@ -43,7 +43,7 @@ public class GoogleOAuthServiceImpl implements GoogleOAuthService {
 
     @Override
     public ProfileDto handleLogin(URI tokenUri) {
-        ResponseEntity<GoogleTokenResponse> response = restClient.get()
+        ResponseEntity<GoogleTokenResponse> response = restClient.post()
                 .uri(tokenUri)
                 .header(HttpHeaders.CONTENT_TYPE,
                         APPLICATION_FORM_URLENCODED_VALUE)

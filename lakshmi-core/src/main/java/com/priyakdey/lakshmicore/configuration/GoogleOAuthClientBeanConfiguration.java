@@ -29,11 +29,14 @@ public class GoogleOAuthClientBeanConfiguration {
         String clientName = google.getClientName();
         String clientId = google.getClientId();
         String clientSecret = google.getClientSecret();
+
         Set<String> scopes = google.getScopes();
+        String scopesAsString = String.join(" ", scopes);
+
         String redirectUri = google.getRedirectUri();
 
         return new GoogleOAuthClientRegistrationProperties(clientName, clientId,
-                clientSecret, scopes, redirectUri);
+                clientSecret, scopesAsString, redirectUri);
     }
 
     @Bean

@@ -24,7 +24,7 @@ public class AuthCookieService implements CookieService<String> {
 
     @Override
     public ResponseCookie create(String token) {
-        return ResponseCookie.from("token", "Bearer " + token)
+        return ResponseCookie.from("token", token)
                 .path("/")
                 .httpOnly(true)
                 .secure(false)      // TODO: env driven
