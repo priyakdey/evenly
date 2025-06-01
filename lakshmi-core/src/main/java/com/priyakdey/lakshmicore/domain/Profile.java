@@ -14,13 +14,12 @@ import java.time.Instant;
  * @author Priyak Dey
  */
 @Entity
+@Table(name = "profile")
 public class Profile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
-            "profile_id_gen")
-    @SequenceGenerator(name = "profile_id_gen", sequenceName = "seq_profile_id",
-            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_id_gen")
+    @SequenceGenerator(name = "profile_id_gen", sequenceName = "seq_profile_id", allocationSize = 1)
     private Integer id;
 
     @Column(nullable = false)

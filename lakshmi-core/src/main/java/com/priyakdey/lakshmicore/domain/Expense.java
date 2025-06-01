@@ -5,15 +5,22 @@
 
 package com.priyakdey.lakshmicore.domain;
 
+import com.priyakdey.lakshmicore.domain.converter.ExpenseCategoryTypeConverter;
+import com.priyakdey.lakshmicore.domain.converter.PaymentTypeConverter;
+import com.priyakdey.lakshmicore.domain.converter.SplitTypeConverter;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Priyak Dey
  */
+@Entity
+@Table(name = "expense")
 public class Expense {
 
     @Id
@@ -21,41 +28,50 @@ public class Expense {
     @SequenceGenerator(name = "expense_id_gen", sequenceName = "seq_expense_id", allocationSize = 1)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "couple_id", nullable = false)
-    private Couple couple;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "group_id", nullable = false)
+    private Group group;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "created_by", nullable = false)
+    private Profile createdBy;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "paid_by", nullable = false)
     private Profile paidBy;
 
+    @Column(length = 255)
     private String title;
 
+    @Column(columnDefinition = "TEXT")
     private String notes;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
     @Column(name = "paid_on", nullable = false)
     private LocalDate paidOn;
 
     @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private ExpenseCategory category;
+    @Convert(converter = ExpenseCategoryTypeConverter.class)
+    @Column(name = "category_id")
+    private ExpenseCategoryType category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_type_id")
+    @Convert(converter = PaymentTypeConverter.class)
+    @Column(name = "payment_type_id")
     private PaymentType paymentType;
 
     @Column(name = "is_shared", nullable = false)
-    private boolean isShared = true;
+    private boolean isShared;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "split_type_id")
+    @Convert(converter = SplitTypeConverter.class)
+    @Column(name = "split_type_id")
     private SplitType splitType;
+
+    @OneToMany(mappedBy = "expense", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ExpenseSplit> splits = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -65,12 +81,20 @@ public class Expense {
         this.id = id;
     }
 
-    public Couple getCouple() {
-        return couple;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setCouple(Couple couple) {
-        this.couple = couple;
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Profile getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Profile createdBy) {
+        this.createdBy = createdBy;
     }
 
     public Profile getPaidBy() {
@@ -121,11 +145,11 @@ public class Expense {
         this.createdAt = createdAt;
     }
 
-    public ExpenseCategory getCategory() {
+    public ExpenseCategoryType getCategory() {
         return category;
     }
 
-    public void setCategory(ExpenseCategory category) {
+    public void setCategory(ExpenseCategoryType category) {
         this.category = category;
     }
 
@@ -151,5 +175,13 @@ public class Expense {
 
     public void setSplitType(SplitType splitType) {
         this.splitType = splitType;
+    }
+
+    public List<ExpenseSplit> getSplits() {
+        return splits;
+    }
+
+    public void setSplits(List<ExpenseSplit> splits) {
+        this.splits = splits;
     }
 }

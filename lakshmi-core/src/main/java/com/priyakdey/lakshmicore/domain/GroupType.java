@@ -8,14 +8,14 @@ package com.priyakdey.lakshmicore.domain;
 /**
  * @author Priyak Dey
  */
-public enum SplitType implements BaseEnumWithId {
-    EVEN(1),
-    PERCENTAGE(2),
-    CUSTOM(3);
+public enum GroupType implements BaseEnumWithId {
+    PERSONAL(1),
+    COUPLE(2);
+
 
     private final int id;
 
-    SplitType(int id) {
+    GroupType(int id) {
         this.id = id;
     }
 
@@ -24,10 +24,12 @@ public enum SplitType implements BaseEnumWithId {
         return id;
     }
 
-    public static SplitType fromId(int id) {
-        for (SplitType type : values()) {
+    public static GroupType fromId(int id) {
+        for (GroupType type : values()) {
             if (type.id == id) return type;
         }
-        throw new IllegalArgumentException("Invalid SplitType id: " + id);
+
+        throw new IllegalArgumentException("Invalid GroupType id: " + id);
     }
+
 }

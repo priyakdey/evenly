@@ -9,7 +9,8 @@
     <include file="db.changelog-100-lookup-tables.sql" relativeToChangelogFile="true"/>
 
     <include file="db.changelog-001-profile.sql" relativeToChangelogFile="true"/>
-    <include file="db.changelog-002-couple.sql" relativeToChangelogFile="true"/>
-    <include file="db.changelog-003-expense.sql" relativeToChangelogFile="true"/>
-    <include file="db.changelog-004-expense-split.sql" relativeToChangelogFile="true"/>
+    <include file="db.changelog-002-group.sql" relativeToChangelogFile="true"/>
+    <include file="db.changelog-003-group_member.sql" relativeToChangelogFile="true"/>
+    <include file="db.changelog-004-expense.sql" relativeToChangelogFile="true"/>
+    <include file="db.changelog-005-expense-split.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

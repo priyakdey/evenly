@@ -5,10 +5,9 @@
 
 package com.priyakdey.lakshmicore.domain;
 
-import java.io.Serializable;
-
 /**
  * @author Priyak Dey
  */
-public record ExpenseSplitId(Long expense, Integer owedBy) implements Serializable {
+public interface BaseEnumWithId {
+    int getId();
 }
