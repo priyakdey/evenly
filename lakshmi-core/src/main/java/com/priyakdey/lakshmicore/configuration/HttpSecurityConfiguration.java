@@ -7,6 +7,9 @@ package com.priyakdey.lakshmicore.configuration;
 
 import com.priyakdey.lakshmicore.configuration.properties.GoogleOAuthStateTokenProperties;
 import com.priyakdey.lakshmicore.configuration.properties.JwtAuthTokenProperties;
+import com.priyakdey.lakshmicore.model.dto.ProfileDto;
+import com.priyakdey.lakshmicore.security.TokenService;
+import com.priyakdey.lakshmicore.security.filter.JwtAuthTokenFilter;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +18,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsUtils;
 
 import static org.springframework.http.HttpMethod.GET;
@@ -29,8 +33,14 @@ import static org.springframework.http.HttpMethod.GET;
 public class HttpSecurityConfiguration {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+    public JwtAuthTokenFilter jwtAuthTokenFilter(TokenService<ProfileDto> authTokenService) {
+        return new JwtAuthTokenFilter(authTokenService);
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http, JwtAuthTokenFilter jwtAuthTokenFilter) throws Exception {
+        // TODO: dedup whitelisted url, fetch from config
         return http
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)  // TODO: enable later
@@ -40,6 +50,7 @@ public class HttpSecurityConfiguration {
                         .requestMatchers(GET, "/api/auth/google/callback").permitAll()
                         .anyRequest().authenticated()
                 )
+                .addFilterBefore(jwtAuthTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

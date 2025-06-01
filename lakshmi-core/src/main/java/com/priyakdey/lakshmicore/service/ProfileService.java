@@ -14,6 +14,8 @@ public interface ProfileService {
 
     boolean existsByGoogleId(String googleId);
 
+    ProfileDto getByProfileId(int profileId);
+
     ProfileDto getByGoogleId(String googleId);
 
     ProfileDto createProfile(String googleId, String name, String email, String profilePic);

@@ -36,6 +36,21 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public ProfileDto getByProfileId(int profileId) {
+        Optional<Profile> optional = profileRepository.findById(profileId);
+        if (optional.isEmpty()) {
+            // TODO: custom exceptions
+            throw new RuntimeException("Profile not found");
+        }
+
+        Profile profile = optional.get();
+        return new ProfileDto(profile.getId(), profile.getName(), profile.getEmail(),
+                profile.getProfilePic());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public ProfileDto getByGoogleId(String googleId) {
         // TODO: custom exception
         Profile profile = profileRepository.findByGoogleId(googleId)
