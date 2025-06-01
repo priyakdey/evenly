@@ -7,19 +7,19 @@ package com.priyakdey.lakshmicore.domain;
 
 import jakarta.persistence.*;
 
+import java.time.Clock;
 import java.time.Instant;
 
 /**
  * @author Priyak Dey
  */
 @Entity
+@Table(name = "profile")
 public class Profile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
-            "profile_id_gen")
-    @SequenceGenerator(name = "profile_id_gen", sequenceName = "seq_profile_id",
-            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_id_gen")
+    @SequenceGenerator(name = "profile_id_gen", sequenceName = "seq_profile_id", allocationSize = 1)
     private Integer id;
 
     @Column(nullable = false)
@@ -35,6 +35,17 @@ public class Profile {
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
+
+    public Profile() {
+    }
+
+    public Profile(String googleId, String name, String email, String profilePic) {
+        this.googleId = googleId;
+        this.name = name;
+        this.email = email;
+        this.profilePic = profilePic;
+        this.createdAt = Instant.now(Clock.systemUTC());
+    }
 
     public Integer getId() {
         return id;

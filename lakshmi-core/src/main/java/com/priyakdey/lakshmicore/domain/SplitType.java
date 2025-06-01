@@ -5,36 +5,29 @@
 
 package com.priyakdey.lakshmicore.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
 /**
  * @author Priyak Dey
  */
-@Entity
-public class SplitType {
+public enum SplitType implements BaseEnumWithId {
+    EVEN(1),
+    PERCENTAGE(2),
+    CUSTOM(3);
 
-    @Id
-    private Integer id;
+    private final int id;
 
-    @Column(nullable = false)
-    private String type;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    SplitType(int id) {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    @Override
+    public int getId() {
+        return id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public static SplitType fromId(int id) {
+        for (SplitType type : values()) {
+            if (type.id == id) return type;
+        }
+        throw new IllegalArgumentException("Invalid SplitType id: " + id);
     }
-
 }

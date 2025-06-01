@@ -13,6 +13,7 @@ import java.math.BigDecimal;
  * @author Priyak Dey
  */
 @Entity
+@Table(name = "expense_split")
 @IdClass(ExpenseSplitId.class)
 public class ExpenseSplit {
 
@@ -26,7 +27,7 @@ public class ExpenseSplit {
     @JoinColumn(name = "owed_by", nullable = false)
     private Profile owedBy;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
     public Expense getExpense() {

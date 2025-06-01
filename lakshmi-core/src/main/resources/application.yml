@@ -21,3 +21,29 @@ spring:
   liquibase:
     analytics-enabled: on
     change-log: classpath:/db/changelog/db.changelog-master.xml
+  security:
+    oauth2:
+      client:
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+        registration:
+          google:
+            client-name: evenly
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            scope:
+              - openid
+              - email
+              - profile
+evenly:
+  jwt:
+    auth:
+      secret: ${EVENLY_JWT_AUTH_SECRET}
+      issuer: evenly
+      expiration: 86400
+    state:
+      secret: ${EVENLY_JWT_STATE_SECRET}
+      issuer: evenly-oauth
+      expiration: 300

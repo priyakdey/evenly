@@ -5,26 +5,25 @@
 <h1 align="center">Evenly</h1>
 
 <p align="center">
-  <em>Your open-source finance partner for couples — expense splitting, savings tracking, and shared financial clarity.</em>
+  <em>Your open-source finance partner — track expenses, manage investments, and grow with clarity.</em>
 </p>
 
 ---
 
 ## 💡 What is Evenly?
 
-**Evenly** is a modern, open-source finance management app **built for couples** who want to:
+**Evenly** is a modern, open-source finance tracking app **built specially for couples** who believe in growing together through financial clarity.
 
-- Split expenses fairly (even when they're not 50-50)
-- Track investments, recurring bills, and shared goals
-- Understand income vs. spending with simple summaries
-- Maintain transparency and teamwork — not spreadsheets
+- Track everyday expenses across personal and household expenses
+- Monitor recurring bills, budgets, and financial habits
+- Visualize your income vs. savings with simple monthly summaries
+- Maintain transparency, not tension — and avoid spreadsheet chaos
 
-Think of it as **Splitwise meets Groww**, but private, quirky, and self-hosted.
+Think of it as your **personal finance dashboard** — focused on **clarity, reflection, and collaboration** between partners.
 
-> [!WARNING]
-> This project is **unfinished** and currently under active development.  
-> It started as a personal, educational experiment — but we believe it has real potential for actual use by couples.  
-> Expect rapid changes, incomplete features, and lots of 💡 in-progress work.
+> ⚠️ **This project is under active development.**  
+> It began as a personal learning project, but is quickly evolving into a usable, self-hostable finance tool.  
+> Expect rapid iteration, unfinished features, and lots of 💡 in-progress ideas.
 
 ---
 
@@ -32,33 +31,35 @@ Think of it as **Splitwise meets Groww**, but private, quirky, and self-hosted.
 
 Most personal finance apps:
 
-- Are **built for individuals**, not couples
-- Have **invasive tracking or require linking bank accounts**
-- Don’t support **uneven splits** or collaborative insights
-- Are **not free or self-hostable**
+- Are **built for individuals**, not couples or household
+- Require **bank linking** or track your data behind the scenes
+- Are often focused on **selling financial products** like credit cards, insurance, or securities
 
-Evenly changes that:
+**Evenly** is different:
 
-✅ 100% self-hostable  
-✅ Works offline or in your own cloud  
+✅ 100% self-hostable - you own your data
+✅ Works offline or in your own private cloud  
 ✅ Designed around **collaboration and conversation**, not isolation  
 ✅ Built with ❤️ by people who want financial transparency to feel human
+✅ Because it’s not just about splitting bills — it’s about working *evenly* toward shared goals. Whether you're tracking expenses, managing investments, or planning for the future, Evenly helps couples grow together — with clarity, transparency, and trust.
 
 ---
 
 ## ✨ Features
 
-- 💸 **Shared + Personal Expense Tracking** (with uneven splits)
-- 🔁 **Recurring Expenses** (rent, subscriptions, etc.)
-- 📊 **Summary Dashboard** (monthly snapshot, category breakdowns)
-- 👫 **Couple Profiles** with shared and individual views
-- 🔐 **Private by Default** — no 3rd party tracking or data syncing
+- 💸 **Personal + Shared Expense Tracking** — Track your expenses solo or sign up as a couple to manage shared finances together
+- 🔁 **Recurring Expenses** — Set up monthly bills like rent, utilities, or subscriptions
+- 📊 **Summary Dashboard** — Get a monthly snapshot: personal vs. shared spending, top categories, and expense trends
+- 👫 **Couple Profiles** — See both individual and shared views of your financial activity
+- 🔐 **Private by Default** — No third-party tracking, syncing, or forced cloud integration
 
-Coming Soon:
 
-- 📈 Investment tracking (PPF, SIP, ESOPs, Stocks)
-- 💬 Commenting/discussing an expense
-- 📱 Mobile-friendly PWA experience
+**Coming Soon:**
+
+- 📈 **Investment Tracking** — Track PPF, SIPs, stocks, ESOPs, and other assets
+- 💬 **Expense Comments** — Add notes or context to expenses for clarity and collaboration
+- 📱 **Mobile-Friendly PWA** — Installable, offline-first experience for phones and tablets
+
 
 ---
 
@@ -66,7 +67,7 @@ Coming Soon:
 
 - **Frontend**: React + TypeScript + TailwindCSS + ShadCN UI (Zinc theme)
 - **Backend**: Spring Boot 3.x + Java 24
-- **Database**: PostgreSQL
+- **Database**: PostgreSQL 17.x
 - **Auth**: Google OAuth2 (JWT + HttpOnly Cookies)
 - **Deployment**: Docker-friendly, self-host first
 

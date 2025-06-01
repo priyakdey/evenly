@@ -5,35 +5,33 @@
 
 package com.priyakdey.lakshmicore.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
 /**
  * @author Priyak Dey
  */
-@Entity
-public class PaymentType {
+public enum PaymentType implements BaseEnumWithId {
+    CASH(1),
+    UPI(2),
+    CREDIT_CARD(3),
+    DEBIT_CARD(4),
+    BANK_TRANSFER(5),
+    OTHER(99);
 
-    @Id
-    private Integer id;
+    private final int id;
 
-    @Column(nullable = false)
-    private String type;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    PaymentType(int id) {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    @Override
+    public int getId() {
+        return id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public static PaymentType fromId(int id) {
+        for (PaymentType type : values()) {
+            if (type.id == id) return type;
+        }
+
+        throw new IllegalArgumentException("Invalid PaymentType id: " + id);
     }
 }
