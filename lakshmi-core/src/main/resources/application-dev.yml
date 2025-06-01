@@ -6,3 +6,9 @@ spring:
       maximum-pool-size: 5
   liquibase:
     enabled: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            redirect-uri: http://localhost:8080/api/auth/google/callback

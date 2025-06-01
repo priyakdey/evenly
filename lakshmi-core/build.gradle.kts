@@ -22,6 +22,12 @@ java {
     }
 }
 
+configurations {
+    compileOnly {
+        extendsFrom(configurations.annotationProcessor.get())
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -33,6 +39,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.liquibase:liquibase-core")
     implementation("com.auth0:java-jwt:4.5.0")
+
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     runtimeOnly("org.postgresql:postgresql")
 

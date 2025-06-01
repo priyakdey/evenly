@@ -7,6 +7,7 @@ package com.priyakdey.lakshmicore.domain;
 
 import jakarta.persistence.*;
 
+import java.time.Clock;
 import java.time.Instant;
 
 /**
@@ -35,6 +36,17 @@ public class Profile {
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
+
+    public Profile() {
+    }
+
+    public Profile(String googleId, String name, String email, String profilePic) {
+        this.googleId = googleId;
+        this.name = name;
+        this.email = email;
+        this.profilePic = profilePic;
+        this.createdAt = Instant.now(Clock.systemUTC());
+    }
 
     public Integer getId() {
         return id;

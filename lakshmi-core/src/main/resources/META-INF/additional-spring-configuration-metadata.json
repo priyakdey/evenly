@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "evenly.jwt.auth.secret",
+      "type": "java.lang.String",
+      "description": "Description for evenly.jwt.auth.secret."
+    },
+    {
+      "name": "evenly.jwt.auth.issuer",
+      "type": "java.lang.String",
+      "description": "Description for evenly.jwt.auth.issuer."
+    },
+    {
+      "name": "evenly.jwt.auth.expiration",
+      "type": "java.lang.String",
+      "description": "Description for evenly.jwt.auth.expiration."
+    },
+    {
+      "name": "evenly.jwt.state.secret",
+      "type": "java.lang.String",
+      "description": "Description for evenly.jwt.state.secret."
+    },
+    {
+      "name": "evenly.jwt.state.issuer",
+      "type": "java.lang.String",
+      "description": "Description for evenly.jwt.state.issuer."
+    },
+    {
+      "name": "evenly.jwt.state.expiration",
+      "type": "java.lang.String",
+      "description": "Description for evenly.jwt.state.expiration."
+    }
+  ]
+}
