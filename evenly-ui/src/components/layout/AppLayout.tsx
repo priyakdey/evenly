@@ -2,8 +2,9 @@
 // Copyright (C) 2025 Priyak Dey
 
 import AppSidebar from "@/components/sidebar/AppSidebar.tsx";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import * as React from "react";
+import "./AppLayout.css";
 
 interface AppLayoutPropsType {
   children: React.ReactNode;
@@ -14,7 +15,6 @@ function AppLayout({ children }: AppLayoutPropsType) {
     <SidebarProvider>
       <AppSidebar />
       <main>
-        <SidebarTrigger />
         {children}
       </main>
     </SidebarProvider>
