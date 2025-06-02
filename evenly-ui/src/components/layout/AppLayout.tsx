@@ -3,19 +3,16 @@
 
 import AppSidebar from "@/components/sidebar/AppSidebar.tsx";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import * as React from "react";
+import { Outlet } from "react-router-dom";
 import "./AppLayout.css";
 
-interface AppLayoutPropsType {
-  children: React.ReactNode;
-}
 
-function AppLayout({ children }: AppLayoutPropsType) {
+function AppLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
       <main>
-        {children}
+        <Outlet />
       </main>
     </SidebarProvider>
   );
