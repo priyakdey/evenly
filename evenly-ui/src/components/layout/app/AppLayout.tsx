@@ -2,7 +2,7 @@
 // Copyright (C) 2025 Priyak Dey
 
 import AppSidebar from "@/components/sidebar/AppSidebar.tsx";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar.tsx";
 import { Outlet } from "react-router-dom";
 import "./AppLayout.css";
 

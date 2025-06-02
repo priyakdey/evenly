@@ -12,8 +12,7 @@ interface ProfileContextType {
   profilePicUrl: string | null;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const ProfileContext = createContext<ProfileContextType | null>(null);
+const ProfileContext = createContext<ProfileContextType | null>(null);
 
 interface ProfileProviderPropsType {
   children: React.ReactNode;
@@ -53,4 +52,7 @@ function ProfileProvider({ children }: ProfileProviderPropsType) {
   );
 }
 
-export default ProfileProvider;
+export {
+  ProfileContext,
+  ProfileProvider
+};

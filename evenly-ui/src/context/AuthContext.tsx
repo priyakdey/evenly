@@ -14,8 +14,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType | null>(null);
 
 interface AuthProviderPropsType {
   children: React.ReactNode;
@@ -52,4 +51,7 @@ function AuthProvider({ children }: AuthProviderPropsType) {
   );
 }
 
-export default AuthProvider;
+export {
+  AuthContext,
+  AuthProvider
+};

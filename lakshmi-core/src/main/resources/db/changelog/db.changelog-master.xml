@@ -13,4 +13,5 @@
     <include file="db.changelog-003-group_member.sql" relativeToChangelogFile="true"/>
     <include file="db.changelog-004-expense.sql" relativeToChangelogFile="true"/>
     <include file="db.changelog-005-expense-split.sql" relativeToChangelogFile="true"/>
+    <include file="db.changelog-006-profile-settings.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
