@@ -22,14 +22,20 @@ import {
   UserCircle2Icon
 } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AppSidebarFooter.css";
 
 function AppSidebarFooter() {
   const [ imgError, setImgError ] = useState<boolean>(false);
   const { name, email, profilePicUrl } = useProfile();
   const { logout } = useAuth();
+  const navigate = useNavigate();
 
   const showFallback = imgError || !profilePicUrl;
+
+  const openSettingsPage = () => {
+    navigate("/settings", { replace: false });
+  };
 
   return (
     <SidebarFooter className="AppSidebarFooter">
@@ -66,7 +72,10 @@ function AppSidebarFooter() {
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" className="AppSidebarFooter-menu">
-              <DropdownMenuItem className="AppSidebarFooter-menu-item">
+              <DropdownMenuItem
+                className="AppSidebarFooter-menu-item"
+                onClick={openSettingsPage}
+              >
                 <SettingsIcon />
                 <span>Settings</span>
               </DropdownMenuItem>
