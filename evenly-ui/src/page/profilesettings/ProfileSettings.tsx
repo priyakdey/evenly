@@ -25,6 +25,8 @@ function ProfileSettingsPage() {
   const [ timezone, setTimezone ] = useState<string>(initialTimezone);
   const [ currency, setCurrency ] = useState<string>(initialCurrency);
   const [ isDirty, setIsDirty ] = useState<boolean>(false);
+  const [ partnerEmail, setPartnerEmail ] = useState<string>("");
+  const [ friendEmail, setFriendEmail ] = useState<string>("");
 
   useEffect(() => {
     setIsDirty(timezone !== initialTimezone || currency !== initialCurrency);
@@ -64,7 +66,7 @@ function ProfileSettingsPage() {
         </section>
 
         {/* Preferences */}
-        <section id="profile-details" className="ProfileSettings-section">
+        <section id="profile-preference" className="ProfileSettings-section">
           Preferences
           <div className="ProfileSettings-section-content">
             <div className="ProfileSettings-section-input">
@@ -88,6 +90,47 @@ function ProfileSettingsPage() {
           </div>
         </section>
 
+        {/* Invites */}
+        <section id="profile-invites" className="ProfileSettings-section">
+          Invites
+          <div className="ProfileSettings-section-content">
+            <div className="ProfileSettings-invite-container">
+              <Label htmlFor="invite-partner">Invite Partner</Label>
+              <div className="ProfileSettings-invite-input-container">
+                <Input type="email" name="invite-partner"
+                       placeholder="johndoe@example.com" value={partnerEmail}
+                       autoComplete="email"
+                       onChange={(e) => setPartnerEmail(e.target.value)}
+                />
+                <Button type="button" variant="secondary"
+                        disabled={partnerEmail === ""}
+                        onClick={() => console.log(partnerEmail)}
+                >
+                  Send Invite
+                </Button>
+              </div>
+            </div>
+            <div className="ProfileSettings-invite-container">
+              <Label htmlFor="invite-friend">
+                Invite a friend to use this application
+              </Label>
+              <div className="ProfileSettings-invite-input-container">
+                <Input type="email" name="invite-friend"
+                       placeholder="johndoe@example.com" value={friendEmail}
+                       autoComplete="email"
+                       onChange={(e) => setFriendEmail(e.target.value)}
+                />
+                <Button type="button" variant="secondary"
+                        disabled={friendEmail === ""}
+                        onClick={() => console.log(friendEmail)}
+                >
+                  Send Invite
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
       </div>
     </PageContainer>
   );
