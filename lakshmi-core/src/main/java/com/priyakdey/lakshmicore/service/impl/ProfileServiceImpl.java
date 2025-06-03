@@ -81,6 +81,16 @@ public class ProfileServiceImpl implements ProfileService {
         return ProfileDto.from(profile, profileSettingsDto);
     }
 
+    @Override
+    @Transactional
+    public void updateProfileSettings(int profileId,
+                                                    ProfileSettingsDto profileSettingsDto) {
+        ProfileSettings profileSettings = getProfileSettings(profileId);
+        profileSettings.setTimezone(profileSettingsDto.timezone());
+        profileSettings.setCurrency(profileSettingsDto.currency());
+        profileSettingsRepository.save(profileSettings);
+    }
+
     private ProfileSettings getProfileSettings(int profileId) {
         Optional<ProfileSettings> profileSettingsOptional =
                 profileSettingsRepository.findById(profileId);

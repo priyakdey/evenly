@@ -8,7 +8,7 @@ import {
   TagsIcon
 } from "lucide-react";
 
-export const menu = {
+export const SIDEBAR_MENU = {
   Overview: [
     {
       label: "Dashboard",

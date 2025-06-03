@@ -13,7 +13,7 @@ import {
   SidebarGroupLabel,
   SidebarMenu
 } from "@/components/ui/sidebar.tsx";
-import { menu } from "@/util/menu.ts";
+import { SIDEBAR_MENU } from "@/util/menu.ts";
 import "./AppSidebar.css";
 
 function AppSidebar() {
@@ -22,7 +22,7 @@ function AppSidebar() {
       <AppSidebarHeader />
       <SidebarContent>
         <nav aria-label="Main sidebar navigation">
-          {Object.entries(menu).map(([ groupLabel, items ]) => (
+          {Object.entries(SIDEBAR_MENU).map(([ groupLabel, items ]) => (
             <SidebarGroup key={groupLabel}>
               <SidebarGroupLabel>{groupLabel}</SidebarGroupLabel>
               <SidebarGroupContent>

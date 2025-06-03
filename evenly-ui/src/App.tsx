@@ -3,6 +3,7 @@
 
 import AppLayout from "@/components/layout/app/AppLayout.tsx";
 import ProtectedRoute from "@/components/route/ProtectedRoute.tsx";
+import { Toaster } from "@/components/ui/sonner.tsx";
 import NotFoundPage from "@/page/404/NotFoundPage.tsx";
 import DashboardPage from "@/page/dashboard/DashboardPage.tsx";
 import LoginPage from "@/page/login/LoginPage.tsx";
@@ -23,6 +24,9 @@ function App() {
         {/* Protected routes */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Toaster richColors theme="dark" dir="ltr" duration={5000}
+               closeButton={true} position="bottom-right"
+      />
     </>
   );
 }

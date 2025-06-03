@@ -6,6 +6,7 @@
 package com.priyakdey.lakshmicore.service;
 
 import com.priyakdey.lakshmicore.model.dto.ProfileDto;
+import com.priyakdey.lakshmicore.model.dto.ProfileSettingsDto;
 
 /**
  * @author Priyak Dey
@@ -19,4 +20,6 @@ public interface ProfileService {
     ProfileDto getByGoogleId(String googleId);
 
     ProfileDto createProfile(String googleId, String name, String email, String profilePic);
+
+    void updateProfileSettings(int profileId, ProfileSettingsDto profileSettingsDto);
 }
