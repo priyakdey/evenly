@@ -22,20 +22,21 @@ function AppSidebar() {
       <AppSidebarHeader />
       <SidebarContent>
         <nav aria-label="Main sidebar navigation">
-          {Object.entries(SIDEBAR_MENU).map(([ groupLabel, items ]) => (
-            <SidebarGroup key={groupLabel}>
-              <SidebarGroupLabel>{groupLabel}</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  {
-                    items.map((item) => (
-                      <AppSidebarMenuItem key={item.label} {...item} />
-                    ))
-                  }
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          ))}
+          {
+            Object.entries(SIDEBAR_MENU).map(([ groupLabel, items ]) => (
+              <SidebarGroup key={groupLabel}>
+                <SidebarGroupLabel>{groupLabel}</SidebarGroupLabel>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {
+                      items.map((item) => (
+                        <AppSidebarMenuItem key={item.label} {...item} />
+                      ))
+                    }
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+            ))}
         </nav>
       </SidebarContent>
       <AppSidebarFooter />

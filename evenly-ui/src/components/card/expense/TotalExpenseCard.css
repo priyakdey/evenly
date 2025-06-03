@@ -1,0 +1,13 @@
+.Card-footer {
+  display: flex;
+  flex-direction: row;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.Card-footer > span {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+}

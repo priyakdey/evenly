@@ -130,7 +130,7 @@ function ProfileSettingsPage() {
             </div>
           </div>
         </section>
-        
+
       </div>
     </PageContainer>
   );

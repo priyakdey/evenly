@@ -13,16 +13,20 @@ interface AppSidebarMenuItemPropsType {
   label: string;
   icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
   href: string;
+  enabled: boolean;
 }
 
 function AppSidebarMenuItem({
                               label,
                               icon: Icon,
-                              href
+                              href,
+                              enabled
                             }: AppSidebarMenuItemPropsType) {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  if (!enabled) return null;
 
   return (
     <SidebarMenuItem key={label}>

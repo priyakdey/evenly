@@ -1,0 +1,21 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+}
+
+.Card-header {
+  padding-bottom: 0;
+  align-items: center;
+}
+
+.Card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-foreground);
+}
+
+.Card-description {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}

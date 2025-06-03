@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // Copyright (C) 2025 Priyak Dey
 
+import { Input } from "@/components/ui/input.tsx";
+import { BellIcon } from "lucide-react";
 import React from "react";
 import "./PageContainer.css";
 
@@ -20,7 +22,12 @@ function PageContainer({
   return (
     <div>
       <div className={headerClass}>
-        {/* Placeholder */}
+        <div className="Page-searchbar">
+          <Input type="text" placeholder="Search..." />
+        </div>
+        <div className="Page-control">
+          <BellIcon size={18} />
+        </div>
       </div>
       <div className={contentClass}>
         <h3 className="Page-title">{title}</h3>
