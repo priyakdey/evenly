@@ -1,7 +1,8 @@
 main {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 1rem;
   overflow-y: auto;
 }
