@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // Copyright (C) 2025 Priyak Dey
 
-import PageContainer from "@/components/layout/page/PageContainer.tsx";
+import Page from "@/components/layout/page/Page.tsx";
 import SelectCurrency from "@/components/select/SelectCurrency.tsx";
 import SelectTimezone from "@/components/select/SelectTimezone.tsx";
 import { Button } from "@/components/ui/button";
@@ -43,7 +43,7 @@ function ProfileSettingsPage() {
   };
 
   return (
-    <PageContainer title="Profile Settings">
+    <Page title="Profile Settings">
       <div className="ProfileSettings-content">
 
         {/* Details */}
@@ -132,7 +132,7 @@ function ProfileSettingsPage() {
         </section>
 
       </div>
-    </PageContainer>
+    </Page>
   );
 }
 

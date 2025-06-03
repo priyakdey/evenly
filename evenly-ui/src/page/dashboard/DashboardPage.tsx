@@ -2,9 +2,9 @@
 // Copyright (C) 2025 Priyak Dey
 
 import TotalExpenseCard from "@/components/card/expense/TotalExpenseCard.tsx";
-import PageContainer from "@/components/layout/page/PageContainer.tsx";
+import Page from "@/components/layout/page/Page.tsx";
 import {
-  Card,
+  Card as ShadCNCard,
   CardContent,
   CardDescription,
   CardHeader,
@@ -16,77 +16,81 @@ import "./Dashboard.css";
 function DashboardPage() {
 
   return (
-    <PageContainer title="Dashboard">
+    <Page title="Dashboard">
       <div className="Dashboard-subtext">
         This is your overview dashboard for this month
       </div>
       <div className="Dashboard-wrapper">
         {/* First Row: Totals */}
-        <div className="Dashboard-grid-4">
+        <div className="Dashboard-grid-5">
+          <TotalExpenseCard />
+          <TotalExpenseCard />
+          <TotalExpenseCard />
+          <TotalExpenseCard />
           <TotalExpenseCard />
         </div>
 
         {/* Second Row: Charts */}
         <div className="Dashboard-grid-2">
-          <Card className="flex flex-col">
+          <ShadCNCard className="flex flex-col">
             <CardHeader className="items-center pb-0">
               <CardTitle>Expense Breakdown</CardTitle>
               <CardDescription>Personal Expense Breakdown</CardDescription>
             </CardHeader>
-          </Card>
+          </ShadCNCard>
 
 
-          <Card>
+          <ShadCNCard>
             <CardHeader>
               <CardTitle>Equity Trend</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="Dashboard-placeholder">[ Line Chart ]</div>
             </CardContent>
-          </Card>
-          <Card>
+          </ShadCNCard>
+          <ShadCNCard>
             <CardHeader>
               <CardTitle>Mutual Funds Trend</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="Dashboard-placeholder">[ Line Chart ]</div>
             </CardContent>
-          </Card>
-          <Card>
+          </ShadCNCard>
+          <ShadCNCard>
             <CardHeader>
               <CardTitle>Other Investments</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="Dashboard-placeholder">[ Summary ]</div>
             </CardContent>
-          </Card>
+          </ShadCNCard>
         </div>
 
         {/* Third Row: Financial Tools */}
         <div className="Dashboard-grid-4">
-          <Card>
+          <ShadCNCard>
             <CardHeader>
               <CardTitle>Credit Card Bills</CardTitle>
               <CardDescription
                 className="Dashboard-value">₹ 22,000</CardDescription>
             </CardHeader>
-          </Card>
-          <Card>
+          </ShadCNCard>
+          <ShadCNCard>
             <CardHeader>
               <CardTitle>Liquid Assets</CardTitle>
               <CardDescription
                 className="Dashboard-value">₹ 1,10,000</CardDescription>
             </CardHeader>
-          </Card>
-          <Card>
+          </ShadCNCard>
+          <ShadCNCard>
             <CardHeader>
               <CardTitle>Recurring Bills</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="Dashboard-placeholder">[ List ]</div>
             </CardContent>
-          </Card>
-          <Card>
+          </ShadCNCard>
+          <ShadCNCard>
             <CardHeader>
               <CardTitle>Split Summary</CardTitle>
             </CardHeader>
@@ -95,11 +99,11 @@ function DashboardPage() {
                 [ You 55% / Partner 45% ]
               </div>
             </CardContent>
-          </Card>
+          </ShadCNCard>
         </div>
       </div>
 
-    </PageContainer>
+    </Page>
   )
     ;
 }

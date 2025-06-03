@@ -4,7 +4,7 @@
 import { Input } from "@/components/ui/input.tsx";
 import { BellIcon } from "lucide-react";
 import React from "react";
-import "./PageContainer.css";
+import "./Page.css";
 
 interface PageContainerPropsType {
   title: string;
@@ -13,12 +13,12 @@ interface PageContainerPropsType {
   children: React.ReactNode;
 }
 
-function PageContainer({
-                         title,
-                         headerClass = "Page-header",
-                         contentClass = "Page-content",
-                         children
-                       }: PageContainerPropsType) {
+function Page({
+                title,
+                headerClass = "Page-header",
+                contentClass = "Page-content",
+                children
+              }: PageContainerPropsType) {
   return (
     <div>
       <div className={headerClass}>
@@ -37,4 +37,4 @@ function PageContainer({
   );
 }
 
-export default PageContainer;
+export default Page;

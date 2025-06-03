@@ -2,13 +2,13 @@
 // Copyright (C) 2025 Priyak Dey
 
 import {
-  Card,
+  Card as ShadCNCard,
   CardDescription,
   CardHeader,
   CardTitle
 } from "@/components/ui/card.tsx";
 import React from "react";
-import "./CardContainer.css";
+import "./Card.css";
 
 interface CardContainerPropsType {
   title: string;
@@ -16,13 +16,13 @@ interface CardContainerPropsType {
   children: React.ReactNode;
 }
 
-function CardContainer({
-                         title,
-                         description,
-                         children
-                       }: CardContainerPropsType) {
+function Card({
+                title,
+                description,
+                children
+              }: CardContainerPropsType) {
   return (
-    <Card className="Card">
+    <ShadCNCard className="Card">
       <CardHeader className="Card-header">
         <CardTitle className="Card-title">{title}</CardTitle>
         <CardDescription className="Card-description">
@@ -30,8 +30,8 @@ function CardContainer({
         </CardDescription>
       </CardHeader>
       {children}
-    </Card>
+    </ShadCNCard>
   );
 }
 
-export default CardContainer;
+export default Card;

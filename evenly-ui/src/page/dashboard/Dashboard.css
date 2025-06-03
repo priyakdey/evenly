@@ -31,6 +31,12 @@
   gap: 24px;
 }
 
+.Dashboard-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
 .Dashboard-value {
   font-size: 1.75rem;
   font-weight: 600;

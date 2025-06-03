@@ -11,3 +11,7 @@
   gap: 2px;
   align-items: center;
 }
+
+.CardContent-Error{
+  text-align: center;
+}

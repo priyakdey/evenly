@@ -1,0 +1,13 @@
+.Card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.Card-error {
+  --btn-dimension: 50px;
+
+  height: var(--btn-dimension);
+  width: var(--btn-dimension);
+}
