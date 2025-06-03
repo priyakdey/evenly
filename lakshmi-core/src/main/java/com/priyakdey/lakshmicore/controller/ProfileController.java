@@ -6,6 +6,9 @@
 package com.priyakdey.lakshmicore.controller;
 
 import com.priyakdey.lakshmicore.model.dto.ProfileDto;
+import com.priyakdey.lakshmicore.model.dto.ProfileSettingsDto;
+import com.priyakdey.lakshmicore.model.response.ProfileResponse;
+import com.priyakdey.lakshmicore.model.response.ProfileSettingsResponse;
 import com.priyakdey.lakshmicore.service.ProfileService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +34,19 @@ public class ProfileController {
     }
 
     @GetMapping
-    public ResponseEntity<ProfileDto> getProfileDetails(Principal principal) {
+    public ResponseEntity<ProfileResponse> getProfileDetails(Principal principal) {
         int profileId = Integer.parseInt(principal.getName());
         ProfileDto profileDto = profileService.getByProfileId(profileId);
-        return ResponseEntity.ok(profileDto);
+
+        ProfileSettingsDto profileSettingsDto = profileDto.profileSettingsDto();
+        ProfileSettingsResponse profileSettings =
+                new ProfileSettingsResponse(profileSettingsDto.timezone(),
+                        profileSettingsDto.currency());
+
+        ProfileResponse profileResponse = new ProfileResponse(profileId, profileDto.name(),
+                profileDto.email(), profileDto.profilePicUrl(), profileSettings);
+
+        return ResponseEntity.ok(profileResponse);
     }
 
 }

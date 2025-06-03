@@ -37,6 +37,7 @@ public class TokenServiceConfiguration {
                         token.getClaim("sub").asInt(),
                         token.getClaim("name").asString(),
                         token.getClaim("email").asString(),
+                        null,
                         null
                 )
         );

@@ -6,8 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="db.changelog-100-lookup-tables.sql" relativeToChangelogFile="true"/>
-
     <include file="db.changelog-001-profile.sql" relativeToChangelogFile="true"/>
-    <include file="db.changelog-006-profile-settings.sql" relativeToChangelogFile="true"/>
+    <include file="db.changelog-002-profile-settings.sql" relativeToChangelogFile="true"/>
+    <include file="db.changelog-100-lookup-tables.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

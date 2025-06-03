@@ -7,7 +7,6 @@ package com.priyakdey.lakshmicore.domain;
 
 import jakarta.persistence.*;
 
-import java.time.Clock;
 import java.time.Instant;
 
 /**

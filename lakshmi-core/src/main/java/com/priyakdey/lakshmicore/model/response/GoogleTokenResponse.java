@@ -7,10 +7,15 @@ package com.priyakdey.lakshmicore.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * @author Priyak Dey
  */
-public class GoogleTokenResponse {
+public class GoogleTokenResponse implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -8989103317203473618L;
 
     @JsonProperty("access_token")
     private String accessToken;

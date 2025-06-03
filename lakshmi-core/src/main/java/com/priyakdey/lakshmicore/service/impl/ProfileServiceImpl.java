@@ -6,8 +6,11 @@
 package com.priyakdey.lakshmicore.service.impl;
 
 import com.priyakdey.lakshmicore.domain.Profile;
+import com.priyakdey.lakshmicore.domain.ProfileSettings;
 import com.priyakdey.lakshmicore.model.dto.ProfileDto;
+import com.priyakdey.lakshmicore.model.dto.ProfileSettingsDto;
 import com.priyakdey.lakshmicore.respository.ProfileRepository;
+import com.priyakdey.lakshmicore.respository.ProfileSettingsRepository;
 import com.priyakdey.lakshmicore.service.ProfileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +27,12 @@ public class ProfileServiceImpl implements ProfileService {
     private static final Logger log = LoggerFactory.getLogger(ProfileServiceImpl.class);
 
     private final ProfileRepository profileRepository;
+    private final ProfileSettingsRepository profileSettingsRepository;
 
-    public ProfileServiceImpl(ProfileRepository profileRepository) {
+    public ProfileServiceImpl(ProfileRepository profileRepository,
+                              ProfileSettingsRepository profileSettingsRepository) {
         this.profileRepository = profileRepository;
+        this.profileSettingsRepository = profileSettingsRepository;
     }
 
     @Override
@@ -38,15 +44,15 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     @Transactional(readOnly = true)
     public ProfileDto getByProfileId(int profileId) {
-        Optional<Profile> optional = profileRepository.findById(profileId);
-        if (optional.isEmpty()) {
+        Optional<Profile> profileOptional = profileRepository.findById(profileId);
+        if (profileOptional.isEmpty()) {
             // TODO: custom exceptions
             throw new RuntimeException("Profile not found");
         }
-
-        Profile profile = optional.get();
-        return new ProfileDto(profile.getId(), profile.getName(), profile.getEmail(),
-                profile.getProfilePic());
+        Profile profile = profileOptional.get();
+        ProfileSettings profileSettings = getProfileSettings(profileId);
+        ProfileSettingsDto profileSettingsDto = ProfileSettingsDto.from(profileSettings);
+        return ProfileDto.from(profile, profileSettingsDto);
     }
 
     @Override
@@ -55,8 +61,8 @@ public class ProfileServiceImpl implements ProfileService {
         // TODO: custom exception
         Profile profile = profileRepository.findByGoogleId(googleId)
                 .orElseThrow(() -> new RuntimeException(googleId));
-        return new ProfileDto(profile.getId(), profile.getName(), profile.getEmail(),
-                profile.getProfilePic());
+
+        return ProfileDto.from(profile, null);
     }
 
     @Override
@@ -65,6 +71,26 @@ public class ProfileServiceImpl implements ProfileService {
                                     String profilePic) {
         Profile profile = new Profile(googleId, name, email, profilePic);
         profile = profileRepository.save(profile);
-        return new ProfileDto(profile.getId(), name, email, profilePic);
+
+        // TODO: do not hardcode, we need a way to take this decision
+        ProfileSettings profileSettings = new ProfileSettings("Asia/Kolkata", "INR");
+        profileSettings.setProfile(profile);
+        profileSettingsRepository.save(profileSettings);
+
+        ProfileSettingsDto profileSettingsDto = ProfileSettingsDto.from(profileSettings);
+        return ProfileDto.from(profile, profileSettingsDto);
+    }
+
+    private ProfileSettings getProfileSettings(int profileId) {
+        Optional<ProfileSettings> profileSettingsOptional =
+                profileSettingsRepository.findById(profileId);
+        if (profileSettingsOptional.isEmpty()) {
+            // Should never happen, if it is happening, something is fucked, so
+            // a different error with 500 should be thrown
+            // TODO: custom exceptions
+            throw new RuntimeException("Profile Settings not found");
+        }
+
+        return profileSettingsOptional.get();
     }
 }
