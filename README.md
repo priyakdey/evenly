@@ -2,40 +2,38 @@
   <img src="./logo/logo.png" alt="Evenly logo" width="180"/>
 </p>
 
-<h1 align="center">Evenly</h1>
-
 <p align="center">
   <em>Your open-source finance partner — track expenses, manage investments, and grow with clarity.</em>
 </p>
 
----
-
-## 💡 What is Evenly?
-
-**Evenly** is a modern, open-source finance tracking app **built specially for couples** who believe in growing together through financial clarity.
-
-- Track everyday expenses across personal and household expenses
-- Monitor recurring bills, budgets, and financial habits
-- Visualize your income vs. savings with simple monthly summaries
-- Maintain transparency, not tension — and avoid spreadsheet chaos
-
-Think of it as your **personal finance dashboard** — focused on **clarity, reflection, and collaboration** between partners.
+<br />
 
 > ⚠️ **This project is under active development.**  
 > It began as a personal learning project, but is quickly evolving into a usable, self-hostable finance tool.  
 > Expect rapid iteration, unfinished features, and lots of 💡 in-progress ideas.
 
----
+## 💡 Introduction?
+
+**Evenly** is a modern, open-source finance tracking app **built for individuals and couples** who believe in growing together through financial clarity.
+
+- Evenly lets you track everyday expense across personal and household expense
+- Monitor and setup recurring bills, budgets, and financial habits
+- Visualize your income vs. savings with simple monthly summaries
+- Maintain transparency, not tension — and avoid spreadsheet chaos
+
+Think of it as your **personal finance dashboard** — focused on **clarity, reflection, and collaboration** between partners.
+
 
 ## 🚀 Why Evenly?
 
 Most personal finance apps:
 
-- Are **built for individuals**, not couples or household
-- Require **bank linking** or track your data behind the scenes
+- Are **built for individuals**, not couples.
+- Require **bank linking** or track your data behind the scenes. Some even ask for credentials for getting your EPF data !!
 - Are often focused on **selling financial products** like credit cards, insurance, or securities
 
-**Evenly** is different:
+**Evenly** is different. It started as usecase for my personal learning and personal
+use to track financial information with my wife. **How is it** different?
 
 ✅ 100% self-hostable - you own your data
 ✅ Works offline or in your own private cloud  

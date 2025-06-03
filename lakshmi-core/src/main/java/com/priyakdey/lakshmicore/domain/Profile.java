@@ -44,7 +44,7 @@ public class Profile {
         this.name = name;
         this.email = email;
         this.profilePic = profilePic;
-        this.createdAt = Instant.now(Clock.systemUTC());
+        this.createdAt = Instant.now();
     }
 
     public Integer getId() {

@@ -50,14 +50,3 @@ INSERT INTO split_type (id, type)
 VALUES (1, 'Even'),
        (2, 'Percentage'),
        (3, 'Custom');
-
-CREATE TABLE group_type
-(
-    id   INT         NOT NULL,
-    type VARCHAR(50) NOT NULL UNIQUE,
-    PRIMARY KEY (id)
-);
-
-INSERT INTO group_type (id, type)
-VALUES (1, 'Personal'),
-       (2, 'Couple');

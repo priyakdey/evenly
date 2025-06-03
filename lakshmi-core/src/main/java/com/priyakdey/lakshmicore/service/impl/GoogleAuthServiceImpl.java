@@ -6,11 +6,10 @@
 package com.priyakdey.lakshmicore.service.impl;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.priyakdey.lakshmicore.model.dto.ProfileDto;
 import com.priyakdey.lakshmicore.model.response.GoogleTokenResponse;
-import com.priyakdey.lakshmicore.service.GoogleOAuthService;
+import com.priyakdey.lakshmicore.service.AuthService;
 import com.priyakdey.lakshmicore.service.ProfileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import java.net.URI;
-import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
 
@@ -29,14 +27,14 @@ import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VAL
  * @author Priyak Dey
  */
 @Service
-public class GoogleOAuthServiceImpl implements GoogleOAuthService {
-    private static final Logger log = LoggerFactory.getLogger(GoogleOAuthServiceImpl.class);
+public class GoogleAuthServiceImpl implements AuthService {
+    private static final Logger log = LoggerFactory.getLogger(GoogleAuthServiceImpl.class);
 
     private final ProfileService profileService;
 
     private final RestClient restClient;
 
-    public GoogleOAuthServiceImpl(ProfileService profileService, RestClient restClient) {
+    public GoogleAuthServiceImpl(ProfileService profileService, RestClient restClient) {
         this.profileService = profileService;
         this.restClient = restClient;
     }

@@ -12,7 +12,7 @@ import java.net.URI;
 /**
  * @author Priyak Dey
  */
-public interface GoogleOAuthService {
+public interface AuthService {
 
     ProfileDto handleLogin(URI tokenUri);
 

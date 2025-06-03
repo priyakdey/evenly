@@ -3,7 +3,7 @@
  * Copyright (C) 2025 Priyak Dey
  */
 
-package com.priyakdey.lakshmicore.service;
+package com.priyakdey.lakshmicore.security;
 
 import org.springframework.http.ResponseCookie;
 

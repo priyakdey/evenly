@@ -3,10 +3,10 @@
  * Copyright (C) 2025 Priyak Dey
  */
 
-package com.priyakdey.lakshmicore.service.impl;
+package com.priyakdey.lakshmicore.security.service;
 
 import com.priyakdey.lakshmicore.configuration.properties.JwtAuthTokenProperties;
-import com.priyakdey.lakshmicore.service.CookieService;
+import com.priyakdey.lakshmicore.security.CookieService;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
 

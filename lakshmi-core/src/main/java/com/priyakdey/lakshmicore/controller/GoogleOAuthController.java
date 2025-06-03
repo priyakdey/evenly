@@ -10,8 +10,8 @@ import com.priyakdey.lakshmicore.configuration.properties.GoogleOAuthClientProvi
 import com.priyakdey.lakshmicore.configuration.properties.GoogleOAuthClientRegistrationProperties;
 import com.priyakdey.lakshmicore.model.dto.ProfileDto;
 import com.priyakdey.lakshmicore.security.TokenService;
-import com.priyakdey.lakshmicore.service.CookieService;
-import com.priyakdey.lakshmicore.service.GoogleOAuthService;
+import com.priyakdey.lakshmicore.security.CookieService;
+import com.priyakdey.lakshmicore.service.AuthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +26,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import static org.apache.tomcat.websocket.Constants.FOUND;
@@ -43,7 +42,7 @@ public class GoogleOAuthController {
     private final GoogleOAuthClientProviderProperties providerProperties;
     private final GoogleOAuthClientRegistrationProperties registrationProperties;
 
-    private final GoogleOAuthService googleOAuthService;
+    private final AuthService authService;
     private final TokenService<String> stateTokenService;
     private final TokenService<ProfileDto> authTokenService;
     private final CookieService<String> authCookieService;
@@ -51,13 +50,13 @@ public class GoogleOAuthController {
 
     public GoogleOAuthController(GoogleOAuthClientProviderProperties providerProperties,
                                  GoogleOAuthClientRegistrationProperties registrationProperties,
-                                 GoogleOAuthService googleOAuthService,
+                                 AuthService authService,
                                  TokenService<String> stateTokenService,
                                  TokenService<ProfileDto> authTokenService,
                                  CookieService<String> authCookieService) {
         this.providerProperties = providerProperties;
         this.registrationProperties = registrationProperties;
-        this.googleOAuthService = googleOAuthService;
+        this.authService = authService;
         this.stateTokenService = stateTokenService;
         this.authTokenService = authTokenService;
         this.authCookieService = authCookieService;
@@ -104,7 +103,7 @@ public class GoogleOAuthController {
 
         URI uri = buildUri(providerProperties.tokenUri(), params);
 
-        ProfileDto profileDto = googleOAuthService.handleLogin(uri);
+        ProfileDto profileDto = authService.handleLogin(uri);
 
         String bearerToken = authTokenService.generateToken(profileDto);
         ResponseCookie cookie = authCookieService.create(bearerToken);
